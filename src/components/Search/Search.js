@@ -19,6 +19,8 @@ import {CityResultList} from "./CityResultList";
 import FullScreenCityInput from "../FullScreenCityInput";
 import {RegionResultList} from "./RegionResultList";
 import FullScreenRegionInput from "../FullScreenRegionInput";
+
+
 export function Search({loadCities, cities, loadRegions, regions, loadTours, isCityLoading, goto, isMain, loadFavouriteTours, showModal, hideModal, allCities}){
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -187,6 +189,9 @@ export function Search({loadCities, cities, loadRegions, regions, loadTours, isC
         setOrRemoveSearchParam(searchParams, "search", values.search);
 
         setSearchParams(searchParams);
+        for (const entry of searchParams.entries()) {
+            console.log(entry);
+          }
 
         if(!!goto){
             navigate(goto + "?" + searchParams);

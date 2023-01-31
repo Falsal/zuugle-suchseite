@@ -95,8 +95,9 @@ export function CityResultList({cities, setCity, setCityInput, onFocusCity, isCi
         </ListItem>
         }
 
-        {(!!_cities ? _cities : []).map(_city => {
+        {(!!_cities ? _cities : []).map((_city,index) => {
             return <ListItem
+                key={index}
                 onMouseDown={(event) => {
                     setCity(_city);
                     setCityInput(_city.label);
