@@ -41,11 +41,11 @@ console.log(headerdata.at);
 function Start({loadFavouriteTours, favouriteTours, loadCities, loadTourConnections, totalTours, loadTotalTours, totalConnections, totalCities, totalRanges, favouriteRanges, loadAllCities, allCities, totalProvider, loadRanges, allRanges}){
     const { trackPageView } = useMatomo()
     const [searchParams, setSearchParams] = useSearchParams();
-
     const navigate = useNavigate();
 
     useEffect(() => {
         const city = searchParams.get('city');
+        console.log('city is ' + city);
         myTrackPageView("Start", trackPageView, city);
     }, []);
 
@@ -59,11 +59,15 @@ function Start({loadFavouriteTours, favouriteTours, loadCities, loadTourConnecti
         loadAllCities();
         loadTotalTours();
         loadRanges({ignore_limit: true, remove_duplicates: true});
+        searchParams.forEach(item=> console.log(item)) // testing params
 
         let searchParamCity = searchParams.get('city');
         const city = localStorage.getItem('city');
+        console.log('city in LocalStorage :', city);
+        console.log(' searchParamCity:', searchParamCity);
         if(!!city && !!!searchParamCity){
             searchParams.set('city', city);
+
             setSearchParams(searchParams);
         }
 
@@ -75,6 +79,9 @@ function Start({loadFavouriteTours, favouriteTours, loadCities, loadTourConnecti
   
     const onSelectTour = (tour) => {
         let _city = searchParams.get('city');
+        const navUrl = `/suche?sort=relevanz&search=${tour.title.replace(/[()-]/g, ' ')}${!!_city ? '&city='+_city : ''}`;
+        console.log('Line 82: URL is :', navUrl)
+        // navigate(`/suche?sort=relevanz&search=Winterwanderung+über+die+Sonnsteine&city=bad-ischl&datum=2023-02-02`,{
         navigate(`/suche?sort=relevanz&search=${tour.title.replace(/[()-]/g, ' ')}${!!_city ? '&city='+_city : ''}`, {
             state: {
                 tour: tour,
@@ -185,7 +192,7 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-    connect(
+    connect(                    //connects the component Start to the redux store
         mapStateToProps,
         mapDispatchToProps
     ),
