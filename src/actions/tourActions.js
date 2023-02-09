@@ -76,6 +76,7 @@ export function setSelectedDate(date) {
 
 export function loadTourPdf(data) {
     return (dispatch, getState) => {
+        console.log("L: 79 -> LOAD_TOUR_PDF_DONE :", LOAD_TOUR_PDF_DONE)
         return loadFile(dispatch, getState, LOAD_TOUR_PDF, LOAD_TOUR_PDF_DONE, "tours", data, "tours/" + data.id + "/pdf", "pdf", "buffer");
     }
 }
