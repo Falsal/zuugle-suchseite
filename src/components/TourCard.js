@@ -62,6 +62,7 @@ export default function TourCard({tour, onSelectTour, loadTourConnections, city}
         if(!!loadTourConnections && !!city && tour.cities && tour.cities.length > 0){
             setConnectionLoading(true);
             loadTourConnections({id: tour.id, city: city}).then(res => {
+                console.log("Line 65 TourCard:",res.data)
                 setConnectionLoading(false);
                 setConnections(res.data.connections);
                 setReturns(res.data.returns);
