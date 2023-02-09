@@ -20,6 +20,7 @@ export function loadFile(dispatch, getState, typeBefore, typeDone, stateName, da
         params: params,
         timeout: 2000000,
     }).then(res => {
+        console.log("crudActions , L23", res.data)
         dispatch({
             type: typeDone,
         });
@@ -99,3 +100,14 @@ export function loadOneReturnAll(dispatch, getState, typeBefore, typeDone, id, r
         return res;
     });
 }
+
+// Code description:
+// This code file exports several functions that interact with an API using the axios library.
+
+// loadFile is used to download a file from the API. It dispatches an action with type typeBefore to indicate that the file is being loaded and sets the parameters to be passed to the API (page, page size, order, etc.). Then it makes a GET request to the API's route with the specified parameters, and on success, dispatches an action with type typeDone.
+
+// loadList is used to load a list of items from the API. It dispatches an action with type typeBefore to indicate that the list is being loaded, and sets the parameters to be passed to the API (page, page size, order, etc.). Then it makes a GET request to the API's route with the specified parameters, and on success, dispatches an action with type typeDone and passes the list of items as well as information about total items and filters. If there's an error, it dispatches an action with type typeDone and sets the list of items and total to empty.
+
+// loadOne is used to load a single item from the API. It dispatches an action with type typeBefore to indicate that the item is being loaded, and makes a GET request to the API's route/id with specified parameters. On success, it dispatches an action with type typeDone and passes the item.
+
+// loadOneReturnAll is used to load a single item from the API and return all the data related to it. It dispatches an action with type typeBefore to indicate that the item is being loaded, and makes a GET request to the API's route/id with specified parameters. On success, it dispatches an action with type typeDone and passes all the data related to the item.
