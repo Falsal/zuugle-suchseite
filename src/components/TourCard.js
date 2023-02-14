@@ -62,7 +62,7 @@ export default function TourCard({tour, onSelectTour, loadTourConnections, city}
         if(!!loadTourConnections && !!city && tour.cities && tour.cities.length > 0){
             setConnectionLoading(true);
             loadTourConnections({id: tour.id, city: city}).then(res => {
-                console.log("Line 65 TourCard:",res.data)
+                // console.log("Line 65 TourCard:",res.data)
                 setConnectionLoading(false);
                 setConnections(res.data.connections);
                 setReturns(res.data.returns);
@@ -159,7 +159,9 @@ export default function TourCard({tour, onSelectTour, loadTourConnections, city}
     }
 
 
-    return  <Card className="tour-card cursor-link" onClick={() => {onSelectTour(tour)}}>
+    return  <Card className="tour-card cursor-link" onClick={() => {
+        console.log("TourCard: L163 tour value :", tour)
+        onSelectTour(tour)}}>
         <CardMedia
             component="img"
             height="140"
