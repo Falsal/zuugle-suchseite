@@ -17,7 +17,7 @@ export const getPageHeader = (directLink) => {
             <meta name="description" content="Zuugle zeigt dir geprüfte Verbindungen mit Bahn und Bus zu Bergtouren, Wanderungen, Skitouren, Schneeschuhwanderungen, etc. von deinem Wohnort aus an." />
         </Helmet>
     }
-    return <></>
+    // return <></>
 }
 
 export const checkIfSeoPageCity = (location, cities) => {
