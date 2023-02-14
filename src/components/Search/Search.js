@@ -62,7 +62,7 @@ export function Search({loadCities, cities, loadRegions, regions, loadTours, isC
             searchParams.set("sort", "relevanz");
             setSearchParams(searchParams);
         }
-console.log( "serachParams L: 65:", searchParams);
+// console.log( "serachParams L: 65:", searchParams);
         if(!!range){
             setRegionInput(range);
             setRegion({value: range, label: range, type: "range"});
