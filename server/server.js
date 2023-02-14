@@ -10,7 +10,7 @@ app.use(compression());
 
 app.listen(port, () => {console.log("Listening on port " + port)});
 
-// app.use("/app_static", express.static(path.join(__dirname, '../suche/app_static'))); // redundant legacy code
+app.use("/app_static", express.static(path.join(__dirname, '../suche/app_static')));
 if(process.env.NODE_ENV === "production"){
   proxy_port = 6060;
 }else {
