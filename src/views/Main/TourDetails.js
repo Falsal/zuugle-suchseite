@@ -4,9 +4,9 @@ import CustomStarRating from "../../components/CustomStarRating";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import DifficultyContainer from "../../components/DifficultyContainer";
+// import DifficultyContainer from "../../components/DifficultyContainer";
 import TourProperty from "../../components/TourProperty";
-import {convertNumToTime, formatNumber, parseFileName} from "../../utils/globals";
+import {convertNumToTime, formatNumber, parseFileName, titleCase} from "../../utils/globals";
 import Expand from "../../icons/Expand";
 import InteractiveMap from "../../components/InteractiveMap";
 import {useEffect, useState} from "react";
@@ -207,7 +207,20 @@ function TourDetails({tour, loadGPX, loadTourPdf, isPdfLoading, connection, retu
             </Box>
 
             <Box sx={{marginTop: '20px'}}>
-                <DifficultyContainer value={tour.difficulty} disabled={true}/>
+                {/* {console.log('tour value L210', tour)} */}
+                {/* {console.log((tour.difficulty_orig).toUpperCase())}
+                {console.log(titleCase(tour.difficulty_orig))} */}
+                {/* <DifficultyContainer value={tour.difficulty} disabled={true}/> */}
+                
+                <Grid container spacing={'20px'}>
+                    <Grid item xs={6}>
+                        <TourProperty title={"Schwierigkeit Zuugle"} text={`${titleCase(tour.difficulty)}`}/>
+                    </Grid>
+                    <Grid item xs={6}>
+                        {/* <TourProperty title={"Schwierigkeit original"} text={`${tour.provider} : ${tour.difficulty_orig}`} /> */}
+                        <TourProperty title={"Schwierigkeit original"} text={`${titleCase(tour.difficulty_orig)}`} />
+                    </Grid>
+                </Grid>
             </Box>
 
             <Box sx={{marginTop: '20px'}}>
