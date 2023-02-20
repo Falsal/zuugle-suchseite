@@ -103,6 +103,8 @@ export function Main({loadTours, loadAllCities, tours, showModal, hideModal, tot
         }
     }, [location])
 
+    // console.log("Line 106 tour :", tour);
+
     useEffect(() => {
         setFilterActive(countFilterActive());
         setMapView(searchParams.get("map") == "true");
@@ -156,6 +158,7 @@ export function Main({loadTours, loadAllCities, tours, showModal, hideModal, tot
     }
 
     const onSelectTour = (tour) => {
+        // console.log("Main L 161, onSelectTour , tour value: " + tour);
         setTour(tour)
         toggleDetailOpen();
     }
@@ -163,6 +166,7 @@ export function Main({loadTours, loadAllCities, tours, showModal, hideModal, tot
     const onLoadAndSelectTour = (id) => {
         loadTour(id, searchParams.get('city')).then(res => {
             if(!!res && !!res.data && !!res.data.tour){
+                // console.log("Main : tour data L168",res.data.tour)
                 setTour(res.data.tour);
                 toggleDetailOpen();
             }
@@ -250,6 +254,7 @@ const mapDispatchToProps = {
 
 
 const mapStateToProps = (state) => {
+    // console.log("Main L256 list of ALL tours : state.tours.tours :", state.tours.tours)
     return {
         loading: state.tours.loading,
         tours: state.tours.tours,
