@@ -103,7 +103,7 @@ export default function TourCard({tour, onSelectTour, loadTourConnections, city}
             });
             values.push({
                 icon: <Intensity style={{fill: "transparent"}} />,
-                text: tour.difficulty + "/10",
+                text: tour.difficulty,
             })
             values.push({
                 icon: <Walk style={{fill: "transparent"}} />,
@@ -116,7 +116,7 @@ export default function TourCard({tour, onSelectTour, loadTourConnections, city}
             values.push({
                 icon: <ArrowHorizontal style={{fill: "transparent"}} />,
                 text: formatNumber(tour.distance, " km"),
-            })
+            });
         }
 
         return <Typography display="inline" style={{whiteSpace: "break-spaces"}}>{values.map((entry,index) => {
@@ -160,7 +160,6 @@ export default function TourCard({tour, onSelectTour, loadTourConnections, city}
 
 
     return  <Card className="tour-card cursor-link" onClick={() => {
-        console.log("TourCard: L163 tour value :", tour)
         onSelectTour(tour)}}>
         <CardMedia
             component="img"
